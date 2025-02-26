@@ -1,4 +1,7 @@
-﻿namespace ConsoleAppTurnBased;
+﻿using System.Numerics;
+using System;
+
+namespace ConsoleAppTurnBased;
 
 class Enemy(int attackPower,
             int CurrentHealth,
@@ -48,55 +51,47 @@ class Enemy(int attackPower,
         else
         {
             ForegroundColor = ConsoleColor.DarkMagenta;
-
+            int playerDamage = RandomDamage - player.d;
             switch (AttackNumbers)
             {
                 case 1:
-                    WriteLine($"{r} attacked and dealt {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} attacked and dealt {playerDamage} damage!");
                     break;
 
                 case 2:
-                    WriteLine($"{r} launched a focused strike and dealt {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} launched a focused strike and dealt {playerDamage} damage!");
                     break;
 
                 case 3:
-                    WriteLine($"{r} charged in confidently and dealt {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} charged in confidently and dealt {playerDamage} damage!");
                     break;
 
                 case 4:
-                    WriteLine($"In a bold move, {r} inflicted {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"In a bold move, {r} inflicted {playerDamage} damage!");
                     break;
 
                 case 5:
-                    WriteLine($"With a calculated swing, {r} secured {RandomDamage - player.d} damage! ");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"With a calculated swing, {r} secured {playerDamage} damage! ");
                     break;
 
                 case 6:
-                    WriteLine($"{r} focused their energy into a swift strike, inflicting {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} focused their energy into a swift strike, inflicting {playerDamage} damage!");
                     break;
 
                 case 7:
-                    WriteLine($"Executing a swift maneuver, {r} managed to inflict {RandomDamage - player.d} damage.");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"Executing a swift maneuver, {r} managed to inflict {playerDamage} damage.");
                     break;
 
                 case 8:
-                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!");
                     break;
 
                 default:
-                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {RandomDamage - player.d} damage!");
-                    unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!");
                     break;
 
             }
+            unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
             ResetColor();
         }
     }
