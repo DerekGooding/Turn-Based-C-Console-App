@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using System;
-
-namespace ConsoleAppTurnBased;
+﻿namespace ConsoleAppTurnBased;
 
 class Enemy(int attackPower,
             int CurrentHealth,
