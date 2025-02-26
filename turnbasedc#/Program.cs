@@ -8,7 +8,6 @@ internal class Program
         Player player = new Player(2, 20, 60, 0, 0, 3, 0, 0, 0, 3, 0, "Water");
         Enemy enemy = new Enemy(2, 20, 50, 0, 0, 3, 0, 0, 0, 3, 0, "Noob");
 
-        Random random = new Random();
         //{player.r} Defense - {player.d}
         //{enemy.r} Health - {enemy.hp}");
         //Console.WriteLine($"{enemy.r} Defense - {enemy.d}");
@@ -112,7 +111,7 @@ internal class Program
 
 
 
-            int EnemyChoice = random.Next(2, 7);
+            int EnemyChoice = Random.Shared.Next(2, 7);
 
             if (EnemyChoice == 2 || EnemyChoice == 3)
             {
@@ -136,7 +135,7 @@ internal class Program
                 }
                 else
                 {
-                    int enemyChoice = random.Next(2, 4);
+                    int enemyChoice = Random.Shared.Next(2, 4);
                     if (enemyChoice == 2 | enemyChoice == 3)
                     {
                         enemy.Attack(player, player, enemy);
