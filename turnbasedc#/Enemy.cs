@@ -2,8 +2,6 @@
 
 class Enemy
 {
-
-
     private int attackPower;
     private int CurrentHealth;
     private int MaxHealth;
@@ -18,12 +16,6 @@ class Enemy
     private int maxthrustUses;
     private int bleedturns;
     private int paraTurns;
-
-
-
-
-
-    Random random = new Random();
 
     public int hp { get { return CurrentHealth; } }
     public string r { get { return User; } }
@@ -66,12 +58,12 @@ class Enemy
 
     public void Attack(Player unitthatsgetAttacking, Player player, Enemy enemy)
     {
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
 
         // Calculate the random damage
         int RandomDamage = (int)(rng * attackPower);
-        int paraChance = random.Next(1, 4);
-        int AttackNumbers = random.Next(1, 8);
+        int paraChance = Random.Shared.Next(1, 4);
+        int AttackNumbers = Random.Shared.Next(1, 8);
         enemy.bleedCheck(enemy, attackPower / 2);
         Console.ReadKey();
         if (paraChance == 4 & paraTurns > 0)
@@ -148,8 +140,8 @@ class Enemy
 
     public void Defense_M(Player bleedout, Enemy enemy)
     {
-        int TextsNumbers = random.Next(1, 8);
-        int paraChance = random.Next(1, 4);
+        int TextsNumbers = Random.Shared.Next(1, 8);
+        int paraChance = Random.Shared.Next(1, 4);
         enemy.bleedCheck(enemy, attackPower / 2);
         Console.ReadKey();
         if (paraChance == 4 & paraTurns > 0)
@@ -231,10 +223,10 @@ class Enemy
     public void Stab(Enemy stabnbleedenemy, Player playerthrust)
     {
 
-        int stabtext = random.Next(1, 4);
+        int stabtext = Random.Shared.Next(1, 4);
 
 
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int StabDamage = (int)(1.15 * (int)attackPower);
         int randStabDamage = (int)(rng * StabDamage);
 
@@ -242,7 +234,7 @@ class Enemy
 
         bleedturns = 0;
 
-        int paraChance = random.Next(1, 4);
+        int paraChance = Random.Shared.Next(1, 4);
         if (paraChance == 4 & paraTurns > 0)
         {
             playerthrust.paralyzeCheck();
@@ -350,8 +342,8 @@ class Enemy
     public void paralyzingThrust(Player paraThrust, Enemy enemy)
     {
 
-        int randThrustText = random.Next(1, 4);
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        int randThrustText = Random.Shared.Next(1, 4);
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int ThrustDamage = (int)(1.20 * (int)attackPower);
         int randThrustDamage = (int)(rng * ThrustDamage);
         enemy.bleedCheck(enemy, attackPower / 2);
