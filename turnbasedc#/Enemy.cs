@@ -52,45 +52,20 @@ class Enemy(int attackPower,
         {
             ForegroundColor = ConsoleColor.DarkMagenta;
             int playerDamage = RandomDamage - player.d;
-            switch (AttackNumbers)
+            string message = AttackNumbers switch
             {
-                case 1:
-                    WriteLine($"{r} attacked and dealt {playerDamage} damage!");
-                    break;
+                1 => $"{r} attacked and dealt {playerDamage} damage!",
+                2 => $"{r} launched a focused strike and dealt {playerDamage} damage!",
+                3 => $"{r} charged in confidently and dealt {playerDamage} damage!",
+                4 => $"In a bold move, {r} inflicted {playerDamage} damage!",
+                5 => $"With a calculated swing, {r} secured {playerDamage} damage! ",
+                6 => $"{r} focused their energy into a swift strike, inflicting {playerDamage} damage!",
+                7 => $"Executing a swift maneuver, {r} managed to inflict {playerDamage} damage.",
+                8 => $"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!",
+                _ => $"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!",
+            };
+            WriteLine(message);
 
-                case 2:
-                    WriteLine($"{r} launched a focused strike and dealt {playerDamage} damage!");
-                    break;
-
-                case 3:
-                    WriteLine($"{r} charged in confidently and dealt {playerDamage} damage!");
-                    break;
-
-                case 4:
-                    WriteLine($"In a bold move, {r} inflicted {playerDamage} damage!");
-                    break;
-
-                case 5:
-                    WriteLine($"With a calculated swing, {r} secured {playerDamage} damage! ");
-                    break;
-
-                case 6:
-                    WriteLine($"{r} focused their energy into a swift strike, inflicting {playerDamage} damage!");
-                    break;
-
-                case 7:
-                    WriteLine($"Executing a swift maneuver, {r} managed to inflict {playerDamage} damage.");
-                    break;
-
-                case 8:
-                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!");
-                    break;
-
-                default:
-                    WriteLine($"{r} lunged forward confidently, resulting in a solid hit of {playerDamage} damage!");
-                    break;
-
-            }
             unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
             ResetColor();
         }
