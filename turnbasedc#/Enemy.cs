@@ -9,7 +9,6 @@ class Enemy
     private int t_Defense;
     private string User;
 
-
     private int stabUses;
     private int maxstabUses;
     private int thrustUses;
@@ -28,14 +27,11 @@ class Enemy
     public int a { get { return attackPower; } }
 
     public int t { get { return thrustUses; } }
-    public int mt { get { return maxthrustUses; } 
+    public int mt { get { return maxthrustUses; }
     }
-
 
     public Enemy(int attackPower, int CurrentHealth, int MaxHealth, int Defense, int t_Defense, int maxstabUses, int stabUses, int bleedturns, int thrustUses, int maxthrustUses, int paraTurns, string User)
     {
-
-
         this.attackPower = attackPower;
         this.CurrentHealth = CurrentHealth;
         this.MaxHealth = MaxHealth;
@@ -43,17 +39,14 @@ class Enemy
         this.t_Defense = t_Defense;
         this.User = User;
 
-
         this.thrustUses = thrustUses;
         this.maxthrustUses = maxthrustUses;
 
         this.bleedturns = bleedturns;
         this.paraTurns = paraTurns;
 
-
         this.stabUses = stabUses;
         this.maxstabUses = maxstabUses;
-
     }
 
     public void Attack(Player unitthatsgetAttacking, Player player, Enemy enemy)
@@ -72,9 +65,6 @@ class Enemy
         }
         else
         {
-
-
-
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
             switch (AttackNumbers)
@@ -114,7 +104,6 @@ class Enemy
                     unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
                     break;
 
-
                 case 8:
                     Console.WriteLine($"{User} lunged forward confidently, resulting in a solid hit of {RandomDamage - player.d} damage!");
                     unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
@@ -125,18 +114,10 @@ class Enemy
                     unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
                     break;
 
-
-
-
-
-
-
             }
             Console.ResetColor();
-
         }
     }
-
 
     public void Defense_M(Player bleedout, Enemy enemy)
     {
@@ -196,16 +177,8 @@ class Enemy
 
                 Console.ResetColor();
             }
-
         }
     }
-
-
-
-
-
-
-
 
     public void TakeDamage(int RandomDamage, Player player)
     {
@@ -214,17 +187,12 @@ class Enemy
         {
             Defense = 0;
             t_Defense = 0;
-
         }
     }
 
-
-
     public void Stab(Enemy stabnbleedenemy, Player playerthrust)
     {
-
         int stabtext = Random.Shared.Next(1, 4);
-
 
         double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int StabDamage = (int)(1.15 * (int)attackPower);
@@ -241,10 +209,8 @@ class Enemy
         }
         else
         {
-
             if (stabUses < maxstabUses)
             {
-
                 Console.ForegroundColor = ConsoleColor.Red;
                 switch (stabtext)
                 {
@@ -276,9 +242,6 @@ class Enemy
                         stabUses++;
                         break;
 
-
-
-
                     default:
                         Console.WriteLine($"{User} rushed their enemy and stabbed doing {randStabDamage - Defense} damage!");
                         stabnbleedenemy.takestab(randStabDamage);
@@ -288,7 +251,6 @@ class Enemy
                         break;
                 }
             } Console.ResetColor();
-
         }
     }
     public void takestab(int randStabDamage)
@@ -300,29 +262,18 @@ class Enemy
             t_Defense = 0;
         }
 
-
-
-
     }
-
 
     public void ApplyBleed(int bleeddamage)
     {
-
         if (bleedturns <= 0)
         {
             bleedturns += 2;
-
         }
-
-
     }
-
 
     public void bleedCheck(Enemy bleedout, int bleeddamage)
     {
-
-
         if (bleedturns > 0)
         {
             CurrentHealth -= bleeddamage;
@@ -330,18 +281,14 @@ class Enemy
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"{User} took {bleeddamage} damage from bleeding.");
             Console.ResetColor();
-
         }
         else if (bleedturns == 0)
         {
             bleedturns = 0;
-
-
         }
     }
     public void paralyzingThrust(Player paraThrust, Enemy enemy)
     {
-
         int randThrustText = Random.Shared.Next(1, 4);
         double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int ThrustDamage = (int)(1.20 * (int)attackPower);
@@ -401,7 +348,6 @@ class Enemy
             Console.ResetColor();
             paraTurns += 7;
         }
-
     }
 
     public void paralyzeCheck()
@@ -410,7 +356,6 @@ class Enemy
         Console.WriteLine($"{User} is parylyzed!");
         Console.WriteLine("They cant move!");
         Console.ResetColor();
-
     }
     public void takeThrust(int randThrustDamage, Player player)
     {
@@ -419,9 +364,7 @@ class Enemy
         {
             Defense = 0;
             t_Defense = 0;
-
         }
-
     }
     public void deathCheck(Enemy enemy)
     {
@@ -432,6 +375,5 @@ class Enemy
             Console.WriteLine($"{User} has been defeated! Nice job you deafeated your first foe.");
             Console.ResetColor();
         }
-
     }
 }

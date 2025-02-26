@@ -4,7 +4,6 @@ internal static class Program
 {
     static void Main()
     {
-
         Player player = new Player(2, 20, 60, 0, 0, 3, 0, 0, 0, 3, 0, "Water");
         Enemy enemy = new Enemy(2, 20, 50, 0, 0, 3, 0, 0, 0, 3, 0, "Noob");
 
@@ -58,9 +57,7 @@ internal static class Program
 
             Console.WriteLine("Choose an action: ");
 
-
             string choice = Console.ReadLine();
-
 
             if (choice == "a")
             {
@@ -109,25 +106,19 @@ internal static class Program
             enemy.deathCheck(enemy);
             player.deathCheck(player);
 
-
-
             int EnemyChoice = Random.Shared.Next(2, 7);
 
             if (EnemyChoice == 2 || EnemyChoice == 3)
             {
                 enemy.Attack(player, player, enemy);
                 Console.ReadKey();
-
-
             }
             else if (EnemyChoice == 4 || EnemyChoice == 5)
             {
                 enemy.Defense_M(player, enemy);
                 Console.ReadKey();
-
             }
             else if (EnemyChoice == 6 || EnemyChoice == 7)
-
                 if (enemy.t < enemy.mt)
                 {
                     enemy.paralyzingThrust(player, enemy);
@@ -157,21 +148,12 @@ internal static class Program
                 Console.WriteLine("To be contiued...");
                 Console.ReadKey();
                 Environment.Exit(0);
-
             }
-
 
             if (player.hp <= 0)
             {
                 player.deathCheck(player);
             }
-
-          
-
-
-
-
         }
     }
 }
-
