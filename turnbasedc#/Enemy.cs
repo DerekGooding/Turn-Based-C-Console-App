@@ -34,7 +34,7 @@ class Enemy(int attackPower,
     public int t { get; private set; } = thrustUses;
     public int mt { get; } = maxthrustUses;
 
-    public void Attack(Player unitthatsgetAttacking, Player player, Enemy enemy)
+    public void Attack(Player target, Player player, Enemy enemy)
     {
         double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
 
@@ -66,7 +66,7 @@ class Enemy(int attackPower,
             };
             WriteLine(message);
 
-            unitthatsgetAttacking.TakeDamage(RandomDamage, enemy);
+            target.TakeDamage(RandomDamage, enemy);
             ResetColor();
         }
     }
@@ -88,44 +88,19 @@ class Enemy(int attackPower,
                 d++;
 
                 ForegroundColor = ConsoleColor.DarkBlue;
-                switch (TextsNumbers)
+                string message = TextsNumbers switch
                 {
-                    case 1:
-                        WriteLine($"{r} positioned their weapon to block, eyes locked on the enemy. ");
-                        break;
-
-                    case 2:
-                        WriteLine($"{r} stood resolute, weapon raised high in preparation.");
-                        break;
-
-                    case 3:
-                        WriteLine($"{r} positioned their weapon at the ready, eyes scanning for danger.");
-                        break;
-
-                    case 4:
-                        WriteLine($"{r} held their weapon firmly, creating an imposing stance.");
-                        break;
-
-                    case 5:
-                        WriteLine($"{r} brought their weapon up to guard their body from strikes. ");
-                        break;
-
-                    case 6:
-                        WriteLine($"{r} steadied their weapon, ready to deflect any attack.");
-                        break;
-
-                    case 7:
-                        WriteLine($"{r} gripped their weapon, poised defensivly.");
-                        break;
-
-                    case 8:
-                        WriteLine($"{r} steadied their weapon, maintaining balance and readiness.");
-                        break;
-
-                    default:
-                        WriteLine($"{r} steadied their weapon, maintaining balance and readiness.");
-                        break;
-                }
+                    1 => $"{r} positioned their weapon to block, eyes locked on the enemy. ",
+                    2 => $"{r} stood resolute, weapon raised high in preparation.",
+                    3 => $"{r} positioned their weapon at the ready, eyes scanning for danger.",
+                    4 => $"{r} held their weapon firmly, creating an imposing stance.",
+                    5 => $"{r} brought their weapon up to guard their body from strikes. ",
+                    6 => $"{r} steadied their weapon, ready to deflect any attack.",
+                    7 => $"{r} gripped their weapon, poised defensivly.",
+                    8 => $"{r} steadied their weapon, maintaining balance and readiness.",
+                    _ => $"{r} steadied their weapon, maintaining balance and readiness.",
+                };
+                WriteLine(message);
 
                 ResetColor();
             }
@@ -252,42 +227,28 @@ class Enemy(int attackPower,
         {
             t++;
             ForegroundColor = ConsoleColor.DarkYellow;
-            switch (randThrustText)
+            int damage = randThrustDamage - paraThrust.d;
+            string message = randThrustText switch
             {
-                case 1:
-                    WriteLine($"With the speed of lightning, {r} executed a paralyzing thrust, striking in an instant and possibly immobilizing their enemy, inflicting {randThrustDamage - paraThrust.d} damage.");
-                    paraThrust.TakeThrust(randThrustDamage);
-                    paraThrust.ApplyParalyze();
+                1 => $"With the speed of lightning, {r} executed a paralyzing thrust," +
+                $" striking in an instant and possibly immobilizing their enemy, inflicting {damage} damage.",
 
-                    break;
+                2 => $"With a swift motion, {r} executed a paralyzing thrust," +
+                $" piercing through and possibly rendering their enemy immobilized, inflicting {damage} damage.",
 
-                case 2:
-                    WriteLine($"With a swift motion, {r} executed a paralyzing thrust, piercing through and possibly rendering their enemy immobilized, inflicting {randThrustDamage - paraThrust.d} damage.");
-                    paraThrust.TakeThrust(randThrustDamage);
-                    paraThrust.ApplyParalyze();
-                    break;
+                3 => $"In a flash, {r} delivered a paralyzing thrust," +
+                $" puncturing flesh and possibly immobilizing the enemy, inflicting {damage} damage.",
 
-                case 3:
-                    WriteLine($"In a flash, {r} delivered a paralyzing thrust, puncturing flesh and possibly immobilizing the enemy, inflicting {randThrustDamage - paraThrust.d} damage.");
-                    paraThrust.TakeThrust(randThrustDamage);
-                    paraThrust.ApplyParalyze();
-                    break;
+                4 => $"In a blur of action, {r} performed a paralyzing thrust," +
+                $" making contact and possibly immobilizing the adversary, inflicting {damage} damage.",
 
-                case 4:
-                    WriteLine($"In a blur of action, {r} performed a paralyzing thrust, making contact and possibly immobilizing the adversary, inflicting {randThrustDamage - paraThrust.d} damage.");
-                    paraThrust.TakeThrust(randThrustDamage);
-                    paraThrust.ApplyParalyze();
-                    break;
+                _ => $"Like lightning, {r} dashed to their opponent and thrust their in there weakpoint doing {damage} "
+            };
 
-                default:
-                    {
-                        WriteLine($"Like lightning, {r} dashed to their opponent and thrust their in there weakpoint doing {randThrustDamage - paraThrust.d} ");
-                        paraThrust.TakeThrust(randThrustDamage);
-                        paraThrust.ApplyParalyze();
-                    }
-                    break;
+            WriteLine(message);
 
-            }
+            paraThrust.TakeThrust(randThrustDamage);
+            paraThrust.ApplyParalyze();
             ResetColor();
         }
     }
