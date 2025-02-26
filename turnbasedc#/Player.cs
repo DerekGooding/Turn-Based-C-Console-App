@@ -18,8 +18,6 @@ class Player
     private int bleedturns;
     private int paraTurns;
 
-    Random random = new Random();
-
     public int hp { get { return CurrentHealth; } }
     public string r { get { return User; } }
 
@@ -57,12 +55,12 @@ class Player
 
     public void Attack(Enemy unitthatsgetAttacking, Player player, Enemy enemy)
     {
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
 
         // Calculate the random damage
         int RandomDamage = (int)(rng * attackPower);
-        int paraChance = random.Next(4);
-        int AttackNumbers = random.Next(1, 8);
+        int paraChance = Random.Shared.Next(4);
+        int AttackNumbers = Random.Shared.Next(1, 8);
         player.bleedCheck(player, attackPower / 2);
 
         if (paraChance == 1 & paraTurns > 0)
@@ -146,8 +144,8 @@ class Player
 
     public void Defense_M(Enemy bleedout, Player player)
     {
-        int TextsNumbers = random.Next(1, 8);
-        int paraChance = random.Next(1, 4);
+        int TextsNumbers = Random.Shared.Next(1, 8);
+        int paraChance = Random.Shared.Next(1, 4);
         player.bleedCheck(player, attackPower / 2);
         if (paraChance == 1 & paraTurns > 0)
         {
@@ -222,13 +220,13 @@ class Player
     public void Stab(Enemy stabnbleedenemy, Player player)
     {
 
-        int stabtext = random.Next(1, 4);
+        int stabtext = Random.Shared.Next(1, 4);
 
 
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int StabDamage = (int)(1.15 * (int)attackPower);
         int randStabDamage = (int)(rng * StabDamage);
-        int paraChance = random.Next(1, 4);
+        int paraChance = Random.Shared.Next(1, 4);
 
         bleedturns = 0;
         if (paraChance == 4 & paraTurns > 0)
@@ -360,8 +358,8 @@ class Player
     public void paralyzingThrust(Player paraThrust)
     {
 
-        int randThrustText = random.Next(1, 4);
-        double rng = random.NextDouble() * 0.45 + 0.75;
+        int randThrustText = Random.Shared.Next(1, 4);
+        double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
         int ThrustDamage = (int)(1.20 * (int)attackPower);
         int randThrustDamage = (int)(rng * ThrustDamage);
 
