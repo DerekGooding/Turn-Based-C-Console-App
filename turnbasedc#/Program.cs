@@ -1,8 +1,8 @@
 ﻿namespace ConsoleAppTurnBased;
 
-internal class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
 
         Player player = new Player(2, 20, 60, 0, 0, 3, 0, 0, 0, 3, 0, "Water");
