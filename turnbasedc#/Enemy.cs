@@ -66,7 +66,7 @@ class Enemy
         int AttackNumbers = Random.Shared.Next(1, 8);
         enemy.bleedCheck(enemy, attackPower / 2);
         Console.ReadKey();
-        if (paraChance == 4 & paraTurns > 0)
+        if (paraChance == 4 && paraTurns > 0)
         {
             enemy.paralyzeCheck();
         }
@@ -144,7 +144,7 @@ class Enemy
         int paraChance = Random.Shared.Next(1, 4);
         enemy.bleedCheck(enemy, attackPower / 2);
         Console.ReadKey();
-        if (paraChance == 4 & paraTurns > 0)
+        if (paraChance == 4 && paraTurns > 0)
         {
             enemy.paralyzeCheck();
         }
@@ -235,7 +235,7 @@ class Enemy
         bleedturns = 0;
 
         int paraChance = Random.Shared.Next(1, 4);
-        if (paraChance == 4 & paraTurns > 0)
+        if (paraChance == 4 && paraTurns > 0)
         {
             playerthrust.paralyzeCheck();
         }

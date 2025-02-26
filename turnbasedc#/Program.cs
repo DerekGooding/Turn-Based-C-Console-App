@@ -136,7 +136,7 @@ internal static class Program
                 else
                 {
                     int enemyChoice = Random.Shared.Next(2, 4);
-                    if (enemyChoice == 2 | enemyChoice == 3)
+                    if (enemyChoice == 2 || enemyChoice == 3)
                     {
                         enemy.Attack(player, player, enemy);
                         Console.ReadKey();

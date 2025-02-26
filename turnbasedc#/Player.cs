@@ -63,7 +63,7 @@ class Player
         int AttackNumbers = Random.Shared.Next(1, 8);
         player.bleedCheck(player, attackPower / 2);
 
-        if (paraChance == 1 & paraTurns > 0)
+        if (paraChance == 1 && paraTurns > 0)
         {
             player.paralyzeCheck();
         }
@@ -147,7 +147,7 @@ class Player
         int TextsNumbers = Random.Shared.Next(1, 8);
         int paraChance = Random.Shared.Next(1, 4);
         player.bleedCheck(player, attackPower / 2);
-        if (paraChance == 1 & paraTurns > 0)
+        if (paraChance == 1 && paraTurns > 0)
         {
             player.paralyzeCheck();
         }
@@ -229,7 +229,7 @@ class Player
         int paraChance = Random.Shared.Next(1, 4);
 
         bleedturns = 0;
-        if (paraChance == 4 & paraTurns > 0)
+        if (paraChance == 4 && paraTurns > 0)
         {
             player.paralyzeCheck();
         }
