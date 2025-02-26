@@ -134,52 +134,26 @@ class Enemy(int attackPower,
         {
             playerthrust.ParalyzeCheck();
         }
-        else
+        else if (s < ms)
         {
-            if (s < ms)
+            ForegroundColor = ConsoleColor.Red;
+            int damage = randStabDamage - d;
+            string message = stabtext switch
             {
-                ForegroundColor = ConsoleColor.Red;
-                switch (stabtext)
-                {
-                    case 1:
-                        WriteLine($"{r} rushed their enemy and stabbed doing {randStabDamage - d}!");
-                        stabnbleedenemy.Takestab(randStabDamage);
-                        stabnbleedenemy.ApplyBleed(a / 2);
-                        s++;
-                        break;
+                1 => $"{r} rushed their enemy and stabbed doing {damage}!",
+                2 => $"{r} darted at their foe and thrust their weapon, dealing {damage} damage!",
+                3 => $"{r} lunged at the opponent and stabbed, inflicting {damage} damage!",
+                4 => $"{r} leaped into action and executed a stab, causing {damage} damage!",
+                _ => $"{r} rushed their enemy and stabbed doing {damage} damage!"
+            };
 
-                    case 2:
-                        WriteLine($"{r} darted at their foe and thrust their weapon, dealing {randStabDamage - d} damage!");
-                        stabnbleedenemy.Takestab(randStabDamage);
-                        stabnbleedenemy.ApplyBleed(a / 2);
-                        s++;
-                        break;
-
-                    case 3:
-                        WriteLine($"{r} lunged at the opponent and stabbed, inflicting {randStabDamage - d} damage!");
-                        stabnbleedenemy.Takestab(randStabDamage);
-                        stabnbleedenemy.ApplyBleed(a / 2);
-                        s++;
-                        break;
-
-                    case 4:
-                        WriteLine($"{r} leaped into action and executed a stab, causing {randStabDamage - d} damage!");
-                        stabnbleedenemy.Takestab(randStabDamage);
-                        stabnbleedenemy.ApplyBleed(a / 2);
-                        s++;
-                        break;
-
-                    default:
-                        WriteLine($"{r} rushed their enemy and stabbed doing {randStabDamage - d} damage!");
-                        stabnbleedenemy.Takestab(randStabDamage);
-                        stabnbleedenemy.ApplyBleed(a / 2);
-                        s++;
-
-                        break;
-                }
-            }
+            WriteLine(message);
+            stabnbleedenemy.Takestab(randStabDamage);
+            stabnbleedenemy.ApplyBleed(a / 2);
+            s++;
             ResetColor();
         }
+        
     }
     public void Takestab(int randStabDamage)
     {
