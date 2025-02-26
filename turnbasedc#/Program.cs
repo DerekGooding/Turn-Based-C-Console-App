@@ -88,7 +88,7 @@ internal static class Program
                 }
                 else
                 {
-                    player.youcantStab();
+                    player.YouCantStab();
                     continue;
                 }
 
@@ -103,8 +103,8 @@ internal static class Program
 
             WriteLine("-- Enemy turn --");
 
-            enemy.deathCheck(enemy);
-            player.deathCheck(player);
+            enemy.DeathCheck(enemy);
+            player.DeathCheck(player);
 
             int EnemyChoice = Random.Shared.Next(2, 7);
 
@@ -121,7 +121,7 @@ internal static class Program
             else if (EnemyChoice == 6 || EnemyChoice == 7)
                 if (enemy.t < enemy.mt)
                 {
-                    enemy.paralyzingThrust(player, enemy);
+                    enemy.ParalyzingThrust(player, enemy);
                     ReadKey();
                 }
                 else
@@ -137,14 +137,14 @@ internal static class Program
                         enemy.Defense_M(player, enemy);
                         ReadKey();
                     }
-                    enemy.paralyzingThrust(player, enemy);
+                    enemy.ParalyzingThrust(player, enemy);
                     ReadKey();
                 }
 
             WriteLine($"{EnemyChoice} is choice");
             if (enemy.hp <= 0)
             {
-                enemy.deathCheck(enemy);
+                enemy.DeathCheck(enemy);
                 WriteLine("To be contiued...");
                 ReadKey();
                 Environment.Exit(0);
@@ -152,7 +152,7 @@ internal static class Program
 
             if (player.hp <= 0)
             {
-                player.deathCheck(player);
+                player.DeathCheck(player);
             }
         }
     }

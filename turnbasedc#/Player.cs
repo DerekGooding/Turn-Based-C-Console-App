@@ -55,11 +55,11 @@ class Player
         int RandomDamage = (int)(rng * attackPower);
         int paraChance = Random.Shared.Next(4);
         int AttackNumbers = Random.Shared.Next(1, 8);
-        player.bleedCheck(player, attackPower / 2);
+        player.BleedCheck(player, attackPower / 2);
 
         if (paraChance == 1 && paraTurns > 0)
         {
-            player.paralyzeCheck();
+            player.ParalyzeCheck();
         }
         else
         {
@@ -126,10 +126,10 @@ class Player
     {
         int TextsNumbers = Random.Shared.Next(1, 8);
         int paraChance = Random.Shared.Next(1, 4);
-        player.bleedCheck(player, attackPower / 2);
+        player.BleedCheck(player, attackPower / 2);
         if (paraChance == 1 && paraTurns > 0)
         {
-            player.paralyzeCheck();
+            player.ParalyzeCheck();
         }
         else
         {
@@ -194,7 +194,7 @@ class Player
         bleedturns = 0;
         if (paraChance == 4 && paraTurns > 0)
         {
-            player.paralyzeCheck();
+            player.ParalyzeCheck();
         }
         else
         {
@@ -207,7 +207,7 @@ class Player
             {
                 case 1:
                     WriteLine($"{User} rushed their enemy and stabbed doing {randStabDamage - Defense}!");
-                    stabnbleedenemy.takestab(randStabDamage);
+                    stabnbleedenemy.Takestab(randStabDamage);
                     stabnbleedenemy.ApplyBleed(attackPower / 2);
 
                     stabUses++;
@@ -215,28 +215,28 @@ class Player
 
                 case 2:
                     WriteLine($"{User} darted at their foe and thrust their weapon, dealing {randStabDamage - Defense} damage!");
-                    stabnbleedenemy.takestab(randStabDamage);
+                    stabnbleedenemy.Takestab(randStabDamage);
                     stabnbleedenemy.ApplyBleed(attackPower / 2);
                     stabUses++;
                     break;
 
                 case 3:
                     WriteLine($"{User} lunged at the opponent and stabbed, inflicting {randStabDamage - Defense} damage!");
-                    stabnbleedenemy.takestab(randStabDamage);
+                    stabnbleedenemy.Takestab(randStabDamage);
                     stabnbleedenemy.ApplyBleed(attackPower / 2);
                     stabUses++;
                     break;
 
                 case 4:
                     WriteLine($"{User} leaped into action and executed a stab, causing {randStabDamage - Defense} damage!");
-                    stabnbleedenemy.takestab(randStabDamage);
+                    stabnbleedenemy.Takestab(randStabDamage);
                     stabnbleedenemy.ApplyBleed(attackPower / 2);
                     stabUses++;
                     break;
 
                 default:
                     WriteLine($"{User} rushed their enemy and stabbed doing {randStabDamage - Defense}!");
-                    stabnbleedenemy.takestab(randStabDamage);
+                    stabnbleedenemy.Takestab(randStabDamage);
                     stabnbleedenemy.ApplyBleed(attackPower / 2);
                     stabUses++;
                     break;
@@ -245,7 +245,7 @@ class Player
         ResetColor();
     }
 
-    public void takestab(int randStabDamage, Enemy enemy)
+    public void Takestab(int randStabDamage, Enemy enemy)
     {
         CurrentHealth -= randStabDamage - Defense;
         if (Defense > 0)
@@ -255,7 +255,7 @@ class Player
         }
     }
 
-    public void youcantStab()
+    public void YouCantStab()
     {
         if (stabUses >= maxstabUses)
         {
@@ -269,14 +269,9 @@ class Player
         {
             bleedturns += 3;
         }
-
-
-
-
-
     }
 
-    public void bleedCheck(Player bleedout, int bleeddamage)
+    public void BleedCheck(Player bleedout, int bleeddamage)
     {
         if (bleedturns > 0)
         {
@@ -290,7 +285,7 @@ class Player
         }
     }
 
-    public void paralyzingThrust(Player paraThrust)
+    public void ParalyzingThrust(Player paraThrust)
     {
         int randThrustText = Random.Shared.Next(1, 4);
         double rng = Random.Shared.NextDouble() * 0.45 + 0.75;
@@ -303,8 +298,8 @@ class Player
             {
                 case 1:
                     WriteLine($"Like lightning, {User} dashed to their opponent and thrust their in there weakpoint doing {randThrustDamage - paraThrust.d}. ");
-                    paraThrust.takeThrust(randThrustDamage);
-                    paraThrust.applyParalyze();
+                    paraThrust.TakeThrust(randThrustDamage);
+                    paraThrust.ApplyParalyze();
                     thrustUses++;
 
                     break;
@@ -312,8 +307,8 @@ class Player
                 default:
                     {
                         WriteLine($"Like lightning, {User} dashed to their opponent and thrust their in there weakpoint doing {randThrustDamage - paraThrust.d} ");
-                        paraThrust.takeThrust(randThrustDamage);
-                        paraThrust.applyParalyze();
+                        paraThrust.TakeThrust(randThrustDamage);
+                        paraThrust.ApplyParalyze();
                     }
                     thrustUses++;
 
@@ -323,7 +318,7 @@ class Player
         }
     }
 
-    public void applyParalyze()
+    public void ApplyParalyze()
     {
         if (paraTurns < 1)
         {
@@ -334,14 +329,14 @@ class Player
         }
     }
 
-    public void paralyzeCheck()
+    public void ParalyzeCheck()
     {
         ForegroundColor = ConsoleColor.DarkYellow;
         WriteLine($"{User} is parylyzed!");
         WriteLine("They cant move!");
         ResetColor();
     }
-    public void takeThrust(int randThrustDamage)
+    public void TakeThrust(int randThrustDamage)
     {
         CurrentHealth -= randThrustDamage - Defense;
         if (Defense > 0)
@@ -350,7 +345,7 @@ class Player
             Defense = 0;
         }
     }
-    public void deathCheck(Player player)
+    public void DeathCheck(Player player)
     {
         if (CurrentHealth <= 0)
         {
