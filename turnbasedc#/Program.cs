@@ -26,7 +26,7 @@ internal static class Program
         WriteLine("Press any key to continue...");
         ResetColor();
         ReadKey();
-        while (death == false)
+        while (!death)
 
         {
             ForegroundColor = ConsoleColor.Cyan;
@@ -57,7 +57,7 @@ internal static class Program
 
             WriteLine("Choose an action: ");
 
-            string choice = ReadLine();
+            string? choice = ReadLine();
 
             if (choice == "a")
             {
@@ -119,6 +119,7 @@ internal static class Program
                 ReadKey();
             }
             else if (EnemyChoice == 6 || EnemyChoice == 7)
+            {
                 if (enemy.t < enemy.mt)
                 {
                     enemy.ParalyzingThrust(player, enemy);
@@ -140,6 +141,7 @@ internal static class Program
                     enemy.ParalyzingThrust(player, enemy);
                     ReadKey();
                 }
+            }
 
             WriteLine($"{EnemyChoice} is choice");
             if (enemy.hp <= 0)
