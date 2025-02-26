@@ -16,65 +16,65 @@ internal static class Program
 
         bool death = false;
 
-        Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("=================================");
-        Console.WriteLine("   Welcome to the Colosseum!    ");
-        Console.WriteLine("=================================");
-        Console.ReadKey();
-        Console.WriteLine("Prepare for your first battle againts a colosseum noob!");
-        Console.WriteLine();
-        Console.WriteLine("Press any key to continue...");
-        Console.ResetColor();
-        Console.ReadKey();
+        ForegroundColor = ConsoleColor.Blue;
+        WriteLine("=================================");
+        WriteLine("   Welcome to the Colosseum!    ");
+        WriteLine("=================================");
+        ReadKey();
+        WriteLine("Prepare for your first battle againts a colosseum noob!");
+        WriteLine();
+        WriteLine("Press any key to continue...");
+        ResetColor();
+        ReadKey();
         while (death == false)
 
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("==================================");
-            Console.WriteLine("         ** BATTLE STATUS **     ");
-            Console.WriteLine("==================================");
-            Console.ForegroundColor = ConsoleColor.Green;
+            ForegroundColor = ConsoleColor.Cyan;
+            WriteLine("==================================");
+            WriteLine("         ** BATTLE STATUS **     ");
+            WriteLine("==================================");
+            ForegroundColor = ConsoleColor.Green;
 
             // Display Player Stats
-            Console.WriteLine($"| Player {player.r} Health: {player.hp}      " +
+            WriteLine($"| Player {player.r} Health: {player.hp}      " +
                 $"   |");
-            Console.WriteLine($"| Defense: {player.d}                      |");
+            WriteLine($"| Defense: {player.d}                      |");
 
-            Console.WriteLine("|---------------------------------|");
+            WriteLine("|---------------------------------|");
 
             // Display Enemy Stats
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"| Enemy {enemy.r} Health: {enemy.hp}           |");
-            Console.WriteLine($"| Defense: {enemy.d}  PThrust({enemy.t}/{enemy.mt})        |");
+            ForegroundColor = ConsoleColor.Red;
+            WriteLine($"| Enemy {enemy.r} Health: {enemy.hp}           |");
+            WriteLine($"| Defense: {enemy.d}  PThrust({enemy.t}/{enemy.mt})        |");
 
-            Console.WriteLine("|=================================|");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"| (A)ttack   (S)tab({player.s}/{player.ms})         " +
+            WriteLine("|=================================|");
+            ForegroundColor = ConsoleColor.White;
+            WriteLine($"| (A)ttack   (S)tab({player.s}/{player.ms})         " +
                 $" |");
-            Console.WriteLine($"| (D)efend                        |");
-            Console.WriteLine("|=================================|");
-            Console.ResetColor();
+            WriteLine($"| (D)efend                        |");
+            WriteLine("|=================================|");
+            ResetColor();
 
-            Console.WriteLine("Choose an action: ");
+            WriteLine("Choose an action: ");
 
-            string choice = Console.ReadLine();
+            string choice = ReadLine();
 
             if (choice == "a")
             {
                 player.Attack(enemy, player, enemy);
-                Console.ReadKey();
+                ReadKey();
             }
             else if (choice == "d")
             {
                 if (player.d == 0)
                 {
                     player.Defense_M(enemy, player);
-                    Console.ReadKey();
+                    ReadKey();
                 }
                 else if (player.d > 0)
                 {
-                    Console.WriteLine("You cant defend again until it is broke by an attack!");
-                    Console.ReadKey();
+                    WriteLine("You cant defend again until it is broke by an attack!");
+                    ReadKey();
                     continue;
                 }
             }
@@ -84,7 +84,7 @@ internal static class Program
                 {
                     player.Stab(enemy, player);
 
-                    Console.ReadKey();
+                    ReadKey();
                 }
                 else
                 {
@@ -92,16 +92,16 @@ internal static class Program
                     continue;
                 }
 
-                Console.ReadKey();
+                ReadKey();
             }
             else
             {
-                Console.WriteLine("Invalid input");
-                Console.ReadKey();
+                WriteLine("Invalid input");
+                ReadKey();
                 continue;
             }
 
-            Console.WriteLine("-- Enemy turn --");
+            WriteLine("-- Enemy turn --");
 
             enemy.deathCheck(enemy);
             player.deathCheck(player);
@@ -111,18 +111,18 @@ internal static class Program
             if (EnemyChoice == 2 || EnemyChoice == 3)
             {
                 enemy.Attack(player, player, enemy);
-                Console.ReadKey();
+                ReadKey();
             }
             else if (EnemyChoice == 4 || EnemyChoice == 5)
             {
                 enemy.Defense_M(player, enemy);
-                Console.ReadKey();
+                ReadKey();
             }
             else if (EnemyChoice == 6 || EnemyChoice == 7)
                 if (enemy.t < enemy.mt)
                 {
                     enemy.paralyzingThrust(player, enemy);
-                    Console.ReadKey();
+                    ReadKey();
                 }
                 else
                 {
@@ -130,23 +130,23 @@ internal static class Program
                     if (enemyChoice == 2 || enemyChoice == 3)
                     {
                         enemy.Attack(player, player, enemy);
-                        Console.ReadKey();
+                        ReadKey();
                     }
                     else if (enemyChoice == 4)
                     {
                         enemy.Defense_M(player, enemy);
-                        Console.ReadKey();
+                        ReadKey();
                     }
                     enemy.paralyzingThrust(player, enemy);
-                    Console.ReadKey();
+                    ReadKey();
                 }
 
-            Console.WriteLine($"{EnemyChoice} is choice");
+            WriteLine($"{EnemyChoice} is choice");
             if (enemy.hp <= 0)
             {
                 enemy.deathCheck(enemy);
-                Console.WriteLine("To be contiued...");
-                Console.ReadKey();
+                WriteLine("To be contiued...");
+                ReadKey();
                 Environment.Exit(0);
             }
 
