@@ -17,15 +17,15 @@ class Player
     private int bleedturns;
     private int paraTurns;
 
-    public int hp { get { return CurrentHealth; } }
-    public string r { get { return User; } }
+    public int hp => CurrentHealth;
+    public string r => User;
 
-    public int d { get { return Defense; } }
+    public int d => Defense;
 
-    public int s { get { return stabUses; } }
-    public int ms { get { return maxstabUses; } }
+    public int s => stabUses;
+    public int ms => maxstabUses;
 
-    public int a { get { return attackPower; } }
+    public int a => attackPower;
 
     // ininiliaze fields
     public Player(int attackPower, int CurrentHealth, int MaxHealth, int Defense, int t_Defense, int maxstabUses, int stabUses, int bleedturns, int thrustUses, int maxthrustUses, int paraTurns, string User)
