@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace turnbasedc_
+namespace turnbasedc_;
+
+class Abilites
 {
-    class Abilites
-    {
-    }
 }
